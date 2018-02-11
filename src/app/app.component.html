@@ -1,0 +1,15 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Favorite food" [(ngModel)]="task" name="task"> 
+  </mat-form-field>
+</form>
+
+<mat-checkbox>Check me!</mat-checkbox>
+
+<button mat-raised-button color="primary" (click)="addLista()">Adicionar</button>
+
+<ul>
+  <li *ngFor="let item of tasks">
+    {{ item }}
+  </li>
+</ul>
