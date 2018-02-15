@@ -2,7 +2,8 @@
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Name" [(ngModel)]="task.name" name="task.name"> 
   </mat-form-field>
-  <mat-form-field class="example-full-width">
+  
+  <mat-form-field class="example-f  ull-width">
     <input matInput placeholder="Value" [(ngModel)]="task.value" name="task.value"> 
   </mat-form-field>
 </form>
@@ -12,6 +13,9 @@
 <button mat-raised-button color="primary" (click)="addLista()">Adicionar</button>
 
 <ul>
-  <li *ngFor="let item of tasks" [innerHTML]="item.name + ' - ' + item.value">
+  <li *ngFor="let item of tasks"  [myTask]="item.name">
+    {{(item.value | formatCurrency) + ' - ' + item.value}}
   </li>
 </ul>
+
+<p myTask></p>

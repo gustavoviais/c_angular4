@@ -1,15 +1,15 @@
-import { PROVIDERS, NATIVEPROVIDERS, MODULES, NATIVEMODULES } from "./app.imports"
+import { PROVIDERS, NATIVEPROVIDERS, MODULES, NATIVEMODULES, DECLARATIONS } from "./app.imports"
 import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { TasksComponent } from './tasks/tasks.component';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TasksComponent
+    AppComponent,    
+    DECLARATIONS,
   ],
   imports: [
     MODULES, 
