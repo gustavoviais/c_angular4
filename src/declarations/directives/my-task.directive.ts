@@ -1,5 +1,5 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
-import { Tasks } from '../../providers/classes/tasks';
+import { Tasks } from '../../classes/tasks';
 
 @Directive({
   selector: '[myTask]'
@@ -9,7 +9,7 @@ export class MyTaskDirective {
   private _myTask:Tasks;
 
   constructor(private el:ElementRef) { 
-    this.el.nativeElement.innerHTML += "Conteúdo";
+    //this.el.nativeElement.innerHTML += "Conteúdo";
   }
 
   get myTask(){
@@ -28,7 +28,7 @@ export class MyTaskDirective {
   }
 
   changeColorTask(){
-    //this.el.nativeElement.style.color = this._myTask.value > 5 ? 'green' : 'red';
+    this.el.nativeElement.style.color = this._myTask.value > 5 ? 'green' : 'red';
     //this.el.nativeElement.style.color ='green';
   }
 

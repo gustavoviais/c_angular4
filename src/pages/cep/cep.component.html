@@ -1,0 +1,38 @@
+<form class="example-form">
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email" [formControl]="emailFormControl">
+    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      {{ validation.email }}
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      {{ validation.required }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Cep" [(ngModel)]="cep.cep" name="cep.cep">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Logradouro" [(ngModel)]="cep.logradouro" name="cep.logradouro">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Complemento" [(ngModel)]="cep.complemento" name="cep.complemento">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Bairro" [(ngModel)]="cep.bairro" name="cep.bairro">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Localidade" [(ngModel)]="cep.localidade" name="cep.localidade">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="UF" [(ngModel)]="cep.uf" name="cep.uf">
+  </mat-form-field>
+</form>
+
+<button mat-raised-button color="primary" (click)="getCep()" [disabled]="btnIsLoading">Buscar</button>

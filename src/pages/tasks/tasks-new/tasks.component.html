@@ -11,11 +11,3 @@
 <mat-checkbox>Check me!</mat-checkbox>
 
 <button mat-raised-button color="primary" (click)="addLista()">Adicionar</button>
-
-<ul>
-  <li *ngFor="let item of tasks"  [myTask]="item.name">
-    {{(item.value | formatCurrency) + ' - ' + item.value}}
-  </li>
-</ul>
-
-<p myTask></p>

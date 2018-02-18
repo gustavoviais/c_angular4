@@ -1,33 +1,41 @@
 //PROVIDERS
-
+import { TaskService } from '../providers/task/task.service'
+import { CepService } from '../providers/cep/cep.service'
 
 //NATIVE PROVIDERS
+//import { FormControl, Validators } from '@angular/forms';
 
 //MODULES
+//import { CepComponentModule } from '../pages/cep/cep.module';
 
 //NATIVE MODULES
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
-import { FormsModule } from '@angular/forms';   
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
+import { HttpModule } from '@angular/http';
 
 //DECLARATIONS
 import { FormatCurrencyPipe } from '../declarations/pipes/format-currency.pipe';
 import { FormatDatePipe } from '../declarations/pipes/format-date.pipe';
-import { TasksComponent } from './tasks/tasks.component';
+import { TasksListComponent } from '../pages/tasks/tasks-list/tasks.component';
+import { TasksNewComponent } from '../pages/tasks/tasks-new/tasks.component';
+import { CepComponent } from '../pages/cep/cep.component';
 import { MyTaskDirective } from '../declarations/directives/my-task.directive';
 
 export const PROVIDERS = [
-    
+    TaskService,
+    CepService
 ]
 
 export const NATIVEPROVIDERS = [
-    
+//    Validators,
+//    FormControl
 ]
 
 export const MODULES = [
-    
+ //   CepComponentModule
 ]
 
 export const NATIVEMODULES = [
@@ -36,12 +44,16 @@ export const NATIVEMODULES = [
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    HttpModule,
+    ReactiveFormsModule
 ]
 
 export const DECLARATIONS = [
     FormatCurrencyPipe,
     FormatDatePipe,
-    TasksComponent,
-    MyTaskDirective
+    TasksListComponent,
+    TasksNewComponent,
+    MyTaskDirective,
+    CepComponent
 ]
