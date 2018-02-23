@@ -3,10 +3,9 @@ import { TaskService } from '../providers/task/task.service'
 import { CepService } from '../providers/cep/cep.service'
 
 //NATIVE PROVIDERS
-//import { FormControl, Validators } from '@angular/forms';
 
 //MODULES
-//import { CepComponentModule } from '../pages/cep/cep.module';
+import { GridModule } from '../modules/jqwidgets/grid.module';
 
 //NATIVE MODULES
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,6 +23,9 @@ import { TasksNewComponent } from '../pages/tasks/tasks-new/tasks.component';
 import { CepComponent } from '../pages/cep/cep.component';
 import { MyTaskDirective } from '../declarations/directives/my-task.directive';
 
+//Components
+import { jqxBarGaugeComponent } from '../../node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxbargauge';
+
 export const PROVIDERS = [
     TaskService,
     CepService
@@ -36,6 +38,7 @@ export const NATIVEPROVIDERS = [
 
 export const MODULES = [
  //   CepComponentModule
+    GridModule
 ]
 
 export const NATIVEMODULES = [
@@ -56,4 +59,8 @@ export const DECLARATIONS = [
     TasksNewComponent,
     MyTaskDirective,
     CepComponent
+]
+
+export const COMPONENTS = [
+    jqxBarGaugeComponent
 ]
