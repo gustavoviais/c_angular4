@@ -1,0 +1,44 @@
+<nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" routerLink="/tasks/new">{{ title }}</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="nav navbar-nav">
+                <li [routerLinkActive]="['active']">
+                    <a routerLink="/tasks">Tasks</a>
+                </li>
+                <li [routerLinkActive]="['active']">
+                    <a routerLink="/cep">Cep</a>
+                </li>
+                <li [routerLinkActive]="['active']">
+                    <a routerLink="/grid">Grid</a>
+                </li>
+            </ul>
+            <!-- <div class="nav navbar-nav navbar-right" style="margin-top: 15px;">
+                <div class="dropdown show" style="margin: -8px 15px 0 15px; float:left; font-weight: normal;">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="false"
+                        aria-expanded="false" style="color:gray;">
+                        @if(isset(Auth::user()->email)) {{ Auth::user()->email }} @endif
+                        <span class="glyphicon glyphicon-chevron-down" style="margin:0 0 0 5px;"></span>
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <span class="glyphicon glyphicon-save" style="margin: 0 0 0 10px;color:gray;"></span>
+                        <a class="dropdown-item" href="{{ route('logout') }}">Sair (logout)</a>
+                    </div>
+                </div>
+                <img src="img/ass.png" alt="Mountain View" style="width:100px;margin-right: 0px; margin-top: -10px; float:left; margin-left: 15px;">
+            </div> -->
+        </div>
+
+    </div>
+</nav>

@@ -17,6 +17,14 @@ export class CepService {
       });
   }
 
+  getReservas() {
+    return this.http.get(`http://localhost/frota/public/getreservas`)
+      .toPromise()
+      .then(response => {
+        return response.json();
+      });
+  }
+
   private getResponseClass(jsonResponse): Cep {
     let cep = new Cep();
     cep.cep = jsonResponse.cep;

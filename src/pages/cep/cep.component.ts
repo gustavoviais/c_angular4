@@ -22,6 +22,15 @@ export class CepComponent implements OnInit {
 
   constructor(private cepService: CepService) {
     this.validation = validation;
+
+    this.cepService.getReservas()
+      .then((resp) => {
+        console.log(resp);
+      })
+      .catch(() => {
+        this.btnIsLoading = false;
+        alert("Não foi possível receber o retorno2!"); 
+      });
   }
 
   ngOnInit() {

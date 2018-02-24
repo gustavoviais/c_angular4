@@ -11,10 +11,10 @@ export class TasksListComponent implements OnInit {
   tasks:Array<Tasks> = [];
 
   constructor(private taskService:TaskService) {
-      this.taskService.tasks.push({
+      /*this.taskService.tasks.push({
         name: "T1",
         value: 7
-      });
+      });*/
 
       this.tasks = this.taskService.tasks;
    }
