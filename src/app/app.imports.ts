@@ -3,6 +3,7 @@ import { TaskService } from '../providers/task/task.service'
 import { CepService } from '../providers/cep/cep.service'
 
 //NATIVE PROVIDERS
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 //MODULES
 import { GridModule } from '../modules/jqwidgets/grid.module';
@@ -26,11 +27,10 @@ import { MyTaskDirective } from '../declarations/directives/my-task.directive';
 import {AppComponent} from './app.component';
 
 //Components
-import { jqxBarGaugeComponent } from '../../node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxbargauge';
+//import { jqxBarGaugeComponent } from '../../node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxbargauge';
 
 //MATERIAL
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-
 import {CdkTableModule} from '@angular/cdk/table';
 import {
     MatAutocompleteModule,
@@ -81,13 +81,14 @@ export const PROVIDERS = [
 ]
 
 export const NATIVEPROVIDERS = [
-   
+    { provide: LocationStrategy, useClass: HashLocationStrategy }    
 ]
 
 export const MODULES = [
  //   CepComponentModule
     GridModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    
 ]
 
 export const NATIVEMODULES = [
@@ -147,6 +148,5 @@ export const DECLARATIONS = [
 ]
 
 export const COMPONENTS = [
-    AppComponent,
-    jqxBarGaugeComponent
+    AppComponent    
 ]

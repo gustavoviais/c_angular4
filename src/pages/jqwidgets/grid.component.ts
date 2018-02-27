@@ -9,6 +9,7 @@ import { FormControl, Validators } from '@angular/forms';
     templateUrl: './grid.component.html',
     styleUrls: ['./grid.component.scss']
 })
+
 export class GridComponent {
 
     source: any =
@@ -26,7 +27,7 @@ export class GridComponent {
                 { name: 'data_devolucao', type: 'date' },
                 { name: 'status', type: 'string' }
             ],
-            url: 'http://localhost/frota/public/getreservas',
+            url: 'http://localhost/frota/public/getreserva',
             updaterow: function (rowid, rowdata) {
                 // synchronize with the server - send update command   
             }
