@@ -1,0 +1,57 @@
+============== INSTALAÇÃO =================
+
+//CRIAR PROJETO
+composer create-project --prefer-dist laravel/laravel angular-auth
+
+//ADICIONAR BIBLIOTECA JWT NO COMPOSER
+composer require tymon/jwt-auth:dev-develop
+composer update
+
+//ADICIONAR PROVIDER EM config/app.php
+\Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+
+//EXECUTAR PHP ARTISAN (irá ser criado um arquivo jwt.php na pasta config)
+php artisan vendor:publish --provider="\Tymon\JWTAuth\Providers\LaravelServiceProvider"
+
+//EXECUTAR PHP ARTISAN para gerar uma chave/token (esta chave será adicionada no arquivo .env)
+php artisan jwt:secret
+
+//ADICIONAR CORS
+composer require barryvdh/laravel-cors
+composer update
+
+//EXECUTAR PHP ARTISAN
+php artisan vendor:publish --provider="\Barryvdh\Cors\ServiceProvider"
+
+//FINALIZANDO
+php artisan serve
+
+//OBS
+1- Add service provider to providers array on the config/app.php
+2- Run php artisan config:cache
+3- Run composer update
+4- Run php artisan config:cache
+5- Run php artisan vendor:publish
+
+============== FIM INSTALAÇÃO =================
+
+
+============== CONFIGURAÇÃO =================
+
+//ADICIONAR MIDDLEWARE PARA PROTEGER ROTAS EM app/Http/Kernel.php
+'jwt.auth'=> \Tymon\JWTAuth\Http\Middleware\Authenticate::class
+
+
+//ADICIONAR em routes/api.php
+Route::group(['middleware' => 'cors'], function(){
+    Route::group(['middleware' => 'jwt.auth'], function(){
+        Route::get('products', 'Api\ProductsController@index');
+        Route::post('order', 'Api\OrdersController@store');
+    });
+    Route::post('login', 'Api\AuthController@login');
+});
+
+
+
+
+============== FIM CONFIGURAÇÃO =================
