@@ -1,4 +1,6 @@
 <ul>
+    <button routerLink="/tasks">Ver Tarefas</button>
+    <button routerLink="/tasks/new">Incluir Tarefas</button>
   <li *ngFor="let item of tasks"  [myTask]="item">
     {{ item.name + ' - ' + (item.value | formatCurrency)}}
   </li>
