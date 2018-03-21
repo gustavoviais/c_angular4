@@ -24,4 +24,12 @@ Route::group(['middleware' => 'cors'], function(){
         Route::post('order', 'Api\OrdersController@store');
     });
     Route::post('login', 'Api\AuthController@login');
+    Route::post('refresh_token', function(){
+        try{
+            $token = JWTAuth::parseToken()->refresh();
+            return response()->json(compact('token'));
+        }catch (\Tymon\JWTAuth\Exceptions\JWTException $exception){
+            return response()->json(['error' => 'token_invalid'], 400);
+        }
+    });
 });
