@@ -9,4 +9,9 @@ export class AuthService {
     this.check = this.jwtToken.token ? true : false;
   }
 
+  logout(){
+    this.jwtToken.token = null;
+    this.check = false;
+  }
+
 }

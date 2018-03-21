@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { LocalStorageService } from '../../services/local-storage.service';
-import { JwtTokenService } from '../../services/jwt-token.service';
+import { LocalStorageService } from '../../services/auth/local-storage.service';
+import { JwtTokenService } from '../../services/auth/jwt-token.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -20,9 +21,11 @@ export class LoginComponent implements OnInit {
   btnSubmit = false;
   redirectAfterLogin = ['/products/list'];
 
-  constructor(private http: Http, private jwtToken: JwtTokenService, private router:Router) { }
+  constructor(private http: Http, private jwtToken: JwtTokenService, private router:Router, private auth:AuthService) {  }
 
   ngOnInit() {
+    if(this.auth.check)
+      this.router.navigate(this.redirectAfterLogin);
   }
 
   login() {
@@ -33,8 +36,9 @@ export class LoginComponent implements OnInit {
       .then(response => {
         //console.log(response);
         this.jwtToken.token = response.json().token;
-        this.router.navigate(this.redirectAfterLogin)
+        this.router.navigate(this.redirectAfterLogin);
         this.btnSubmit = false;
+        this.auth.check = true;
       })
       .catch(response => {
         console.log(response);

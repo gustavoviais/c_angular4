@@ -1,11 +1,8 @@
 <!-- <tasks-new></tasks-new>
 <tasks-list></tasks-list> -->
 <!-- <page-cep></page-cep> -->
-<page-menu></page-menu>
-
-<br><br><br>
-
+<page-menu *ngIf="auth.check"></page-menu>
+<br><br><br><br>
 <div class="container">        
         <router-outlet></router-outlet> 
 </div>
-

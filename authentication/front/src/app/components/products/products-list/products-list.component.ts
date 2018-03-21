@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { JwtTokenService } from '../../../services/jwt-token.service';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { RequestOptions, Headers } from '@angular/http';
-import { AuthService } from '../../../services/auth.service';
+import { DefaultRequestOptionsService } from '../../../services/auth/default-request-options.service';
+import { JwtTokenService } from '../../../services/auth/jwt-token.service';
 
 @Component({
   selector: 'products-list',
@@ -12,24 +12,35 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class ProductsListComponent implements OnInit {
 
-  products:Array<Object>=[];
+  products: Array<Object> = [];
 
-  constructor(private http:Http, private jwtToken: JwtTokenService, private auth:AuthService) { }
+  constructor(
+    private http: Http,
+    private requestOptions: DefaultRequestOptionsService,
+    private jwtToken: JwtTokenService
+  ) { }
 
   ngOnInit() {
     this.getProducts();
   }
 
-  getProducts(){
-    let requestOption = new RequestOptions();
+  getProducts() {
 
-    requestOption.headers = new Headers();
-    requestOption.headers.set('Authorization', `Bearer ${this.jwtToken.token}`);
-    requestOption.headers.set('Content-Type', 'application/json');
-
-    this.http.get('http://localhost/c_angular4/authentication/api/public/api/products', requestOption)
+    this.http.get('http://localhost/c_angular4/authentication/api/public/api/products', this.requestOptions.merge(new RequestOptions()))
       .toPromise()
-      .then(response => this.products = response.json());
-  }
+      .then(response => this.products = response.json())
+      /*.catch(responseError => {
+        if (responseError.status === 401) {
+          this.http.post('http://localhost/c_angular4/authentication/api/public/api/refresh_token', {})
+            .toPromise()
+            .then(response => {
+              this.jwtToken.token = response.json().token;
 
+              this.http.get('http://localhost/c_angular4/authentication/api/public/api/products', this.requestOptions.merge(new RequestOptions()))
+                .toPromise()
+                .then(response => this.products = response.json())
+            })
+        }
+      });*/
+  }
 }

@@ -4,11 +4,12 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ProductsListComponent } from './components/products/products-list/products-list.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
     AppComponent,    
-    DECLARATIONS, ProductsListComponent
+    DECLARATIONS, ProductsListComponent, LogoutComponent
   ],
   imports: [
     MODULES, 

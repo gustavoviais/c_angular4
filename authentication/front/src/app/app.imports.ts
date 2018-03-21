@@ -1,10 +1,11 @@
 //PROVIDERS
 import { TaskService } from '../providers/task/task.service'
 import { CepService } from '../providers/cep/cep.service'
-import { LocalStorageService } from './services/local-storage.service';
-import { JwtTokenService } from './services/jwt-token.service';
-import { AuthService } from './services/auth.service';
-import { AuthGuardRouterService } from './services/auth-guard-router.service';
+import { LocalStorageService } from './services/auth/local-storage.service';
+import { JwtTokenService } from './services/auth/jwt-token.service';
+import { AuthService } from './services/auth/auth.service';
+import { AuthGuardRouterService } from './services/auth/auth-guard-router.service';
+import { DefaultRequestOptionsService } from './services/auth/default-request-options.service';
 
 //NATIVE PROVIDERS
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
@@ -14,7 +15,7 @@ import { GridModule } from '../modules/jqwidgets/grid.module';
 
 //NATIVE MODULES
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
@@ -76,14 +77,14 @@ import {
     MatTooltipModule,
   } from '@angular/material';
 
-
 export const PROVIDERS = [
     TaskService,
     CepService,
     LocalStorageService,
     JwtTokenService,
     AuthService,
-    AuthGuardRouterService
+    AuthGuardRouterService,
+    DefaultRequestOptionsService
 ]
 
 export const NATIVEPROVIDERS = [
